@@ -10,6 +10,6 @@
         </div>
     
     
-    <a href="" class="btn btn-primary">Go to the exam</a>
+    <a href="?type=velo&action=index" class="btn btn-primary">Go to the exam</a>
 
 </div>

@@ -13,40 +13,15 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="btn btn-dark bg-light navbar-brand" href="?type=cocktail&action=index">집</a>
+  <a class="btn btn-dark bg-light navbar-brand" href="?type=home&action=index">집</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link btn btn-info" href="?type=cocktail&action=new">
-          <i class="fas fa-plus-circle"></i> cocktail</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?type=icecream&action=index">
-          <i style="font-size:25px" class="fas fa-ice-cream"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-info" href="?type=icecream&action=new">
-          <i class="fas fa-plus-circle"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?type=info&action=index">
-          <i style="font-size:25px"  class="far fa-newspaper"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-info" href="?type=info&action=new">
-          <i class="fas fa-plus-circle"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?type=sandwich&action=index">
-          <i style="font-size:25px" class="fas fa-hotdog"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-info" href="?type=sandwich&action=new">
-          <i class="fas fa-plus-circle"></i></a>
-      </li>
+        <!-- <a class="nav-link btn btn-info" href="?type=cocktail&action=new">
+          <i class="fas fa-plus-circle"></i> cocktail</a> -->
       <!-- <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li> -->

@@ -155,6 +155,9 @@ class Velo extends AbstractController
         $avis = new \Models\Avis();
         $avis = $avis->findAllById($id);
 
+        // var_dump($avis);
+        // die();
+
         return $this->render("velos/show", [
             "pageTitle" => "A propos du vélo {$velo->getName()}",
             "velo" => $velo,

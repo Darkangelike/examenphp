@@ -26,30 +26,29 @@
     
     <!-- CARD AVIS -->
     <div class="velo-card m-4">
-
-
-    
         <!-- ALL AVIS -->
         <?php foreach ($avis as $unAvis) { ?>
-        
+
+            <!-- Delete button -->
             <form action="?type=avis&action=remove&id=<?= $unAvis->getId() ?>" method="POST">
                 <button value="<?= $unAvis->getId() ?>" name="id" style="float:right" type="submit" class="btn btn-danger">X</button>
             </form>
 
-        <!-- TITLE -->
-        <div class="card-header">
-            <H2><?= $unAvis->getAuthor() ?></H2>
-        </div>
-    
-        <!-- CONTENT -->
-        <div class="card-body">
-            <p><?= $unAvis->getContent() ?></p>
-        </div>
 
-    <?php } ?>
-    <!-- END OF AVIS -->
+            <!-- TITLE -->
+            <div class="card-header">
+                <H2><?= $unAvis->getAuthor() ?></H2>
+            </div>
+            
+            <!-- CONTENT -->
+            <div class="card-body">
+                <p><?= $unAvis->getContent() ?></p>
+            </div>
+            
+            <?php } ?>
+            <!-- END OF AVIS FOREACH -->
+            
 
-    
     <!-- FORM -->
     <div class="card-footer">
         
@@ -66,5 +65,9 @@
             </div>
         </form>
     </div>
+
     
 </div>
+
+
+        

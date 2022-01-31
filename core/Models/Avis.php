@@ -70,9 +70,9 @@ class Avis extends AbstractModel
      * 
      * @param integer $velo_id
      * 
-     * @return
+     * @return array | bool
      */
-    public function findAllById(int $velo_id): array
+    public function findAllById(int $velo_id): array | bool
     {
         $sql = $this->pdo->prepare("SELECT * FROM {$this->tableName} WHERE velo_id = :velo_id");
         $sql->execute([

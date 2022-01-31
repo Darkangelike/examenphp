@@ -62,7 +62,14 @@ class Velo extends AbstractModel
 
     // METHODS
     
-    public function save(Velo $velo){
+    /**
+     * 
+     * Insert a new BIKE object in the database
+     * 
+     * @return void
+     */
+    public function save(Velo $velo):void
+    {
 
         $sql = $this->pdo->prepare("INSERT INTO {$this->tableName} (name, description, image, price)
         VALUES (:name, :description, :image, :price)");
@@ -73,6 +80,7 @@ class Velo extends AbstractModel
             "price" => $velo->price,
         ]);
     }
+
 }
 
 

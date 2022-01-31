@@ -26,19 +26,19 @@ class Velo extends AbstractController
 
         if (!empty($_POST["name"]))
         {
-            $name = $_POST["name"];
+            $name = htmlspecialchars($_POST["name"]); 
         }
         if (!empty($_POST["description"]))
         {
-            $description = $_POST["description"];
+            $description = htmlspecialchars($_POST["description"]);
         }
         if (!empty($_POST["image"]))
         {
-            $image = $_POST["image"];
+            $image = htmlspecialchars($_POST["image"]);
         }
         if (!empty($_POST["price"]) && ctype_digit($_POST["price"]))
         {
-            $price = $_POST["price"];
+            $price = (int)$_POST["price"];
         }
 
         if (!empty($_POST["create"]))
@@ -74,6 +74,38 @@ class Velo extends AbstractController
 
         return $this->render("velos/create", [
             "pageTitle" => "Ajoutez un vélo à la liste"
+        ]);
+
+    }
+
+    public function delete()
+    {
+        $id = null;
+
+        if (!empty($_POST["id"]) && ctype_digit($_POST["id"]))
+        {
+            $id = (int)$_POST["id"];
+        }
+
+        // $velo = new \Models\Velo();
+
+        $velo = $this->defaultModel->findById($id);
+
+        if (!$velo)
+        {
+            $this->redirect([
+                "type" => "velo",
+                "action" => "index",
+                "info" => "errId"
+            ]);
+        }
+
+        $this->defaultModel->remove($id);
+
+        $this->redirect([
+            
+                "type" => "velo",
+                "action" => "index"
         ]);
     }
 }

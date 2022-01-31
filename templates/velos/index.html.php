@@ -16,8 +16,6 @@
 
             <!-- Delete button -->
             <form action="?type=velo&action=delete&id=<?= $velo->id ?>" method="POST">
-                <!-- <input type="hidden" name="type" value="velo">
-                <input type="hidden" name="action" value="delete"> -->
                 <button value="<?= $velo->id ?>" name="id" style="float:right" class="btn btn-danger">X</button>
             </form>
 

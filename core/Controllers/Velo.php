@@ -131,6 +131,12 @@ class Velo extends AbstractController
         ]);
     }
 
+    /**
+     * 
+     * Displays one bike using its associated ID
+     * 
+     * redirects to velos/index if the id is not found in the database
+     */
     public function show()
     {
         $id = null;
@@ -155,14 +161,105 @@ class Velo extends AbstractController
         $avis = new \Models\Avis();
         $avis = $avis->findAllById($id);
 
-        // var_dump($avis);
-        // die();
-
         return $this->render("velos/show", [
             "pageTitle" => "A propos du vélo {$velo->getName()}",
             "velo" => $velo,
             "avis" => $avis
         ]);
+
+    }
+
+
+    /**
+     * Velo edition:
+     * 
+     * First gets a bike ID and checks if the bike exists in the database
+     * If the bike exists, fills the form with its values
+     * Upon submitting the new values, the bike will be edited in the database also
+     * 
+     * Otherwise if the id matches no bike, redirection to velos/index 
+     * 
+     */
+    public function edit()
+    {
+        $id = null;
+        $edit = null;
+        $name = null;
+        $description = null;
+        $price = null;
+
+        if (!empty($_GET["id"]) && ctype_digit($_GET["id"]))
+        {
+            $id = (int)$_GET["id"];
+        }
+        if (!empty($_POST["id"]) && ctype_digit($_POST["id"]))
+        {
+            $id = (int)$_POST["id"];
+        }
+        if (!empty($_POST["price"]) && ctype_digit($_POST["price"]))
+        {
+            $price = (int)$_POST["price"];
+        }
+
+        if (!empty($_POST["edit"]))
+        {
+            $edit = true;
+        }
+        if (!empty($_POST["description"]))
+        {
+            $description = htmlspecialchars($_POST["description"]);
+        }
+        if (!empty($_POST["name"]))
+        {
+            $name = htmlspecialchars($_POST["name"]);
+        }
+
+        // var_dump($_GET);
+        // die();
+
+        $velo = $this->defaultModel->findById($id);
+        
+        // If not edit mode then displays a page with a form
+        if (!$edit)
+        {
+            $this->render("velos/edit", [
+                "pageTitle" => "Editez le vélo {$velo->getName()}",
+                "velo" => $velo
+            ]);
+        }
+
+
+        if (!$velo){
+            $this->redirect([
+                "type" => "velo",
+                "action" => "index",
+                "info" => "errId"
+            ]);
+        }
+
+        if (!$name || !$description || !$price)
+        {
+            $this->redirect([
+                "type" => "velo",
+                "action" => "edit",
+                "id" => $id,
+                "info" => "errForm"
+            ]);
+        }
+
+        $velo->setName($name);
+        $velo->setDescription($description);
+        $velo->setPrice($price);
+
+        $this->edit($velo);
+
+        
+         $this->redirect([
+                "type" => "velo",
+                "action" => "edit",
+                "id" => $id
+         ]);
+
 
     }
 

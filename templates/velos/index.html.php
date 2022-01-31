@@ -20,7 +20,7 @@
             </form>
 
             <!-- Edit button -->
-                <a href="?id=<?= $velo->getId() ?>&action=new&type=velo" style="float:right" class="btn btn-info">Edit</a>
+                <!-- <a href="?id=<?= $velo->getId() ?>&action=new&type=velo" style="float:right" class="btn btn-info">Edit</a> -->
     
             <!-- View button -->
                 <a href="?id=<?= $velo->getId() ?>&action=show&type=velo" style="float:right" class="btn btn-info">View</a>

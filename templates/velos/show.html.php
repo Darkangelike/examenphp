@@ -61,7 +61,7 @@
             </div>
             
             <div class="form-group">
-                <button type="submit" name="velo_id" value="<?= $unAvis->getVelo_Id() ?>" class="btn btn-info">Ajouter un avis</button>
+                <button type="submit" name="velo_id" value="<?= $velo->getId() ?>" class="btn btn-info">Ajouter un avis</button>
             </div>
         </form>
     </div>

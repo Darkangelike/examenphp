@@ -40,6 +40,11 @@ class Avis extends AbstractModel
 
     // velo_id getter
 
+    public function setVelo_Id(int $velo_id): void
+    {
+        $this->velo_id = $velo_id;
+    }
+
     public function getVelo_Id(): int
     {
         return $this->velo_id;

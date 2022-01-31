@@ -15,15 +15,15 @@
         <div style="height:40px">
 
             <!-- Delete button -->
-            <form action="?type=velo&action=delete&id=<?= $velo->id ?>" method="POST">
-                <button value="<?= $velo->id ?>" name="id" style="float:right" class="btn btn-danger">X</button>
+            <form action="?type=velo&action=delete&id=<?= $velo->getId() ?>" method="POST">
+                <button value="<?= $velo->getId() ?>" name="id" style="float:right" class="btn btn-danger">X</button>
             </form>
 
             <!-- Edit button -->
-                <a href="?id=<?= $velo->id ?>&action=new&type=velo" style="float:right" class="btn btn-info">Edit</a>
+                <a href="?id=<?= $velo->getId() ?>&action=new&type=velo" style="float:right" class="btn btn-info">Edit</a>
     
             <!-- View button -->
-                <a href="?id=<?= $velo->id ?>&action=show&type=velo" style="float:right" class="btn btn-info">View</a>
+                <a href="?id=<?= $velo->getId() ?>&action=show&type=velo" style="float:right" class="btn btn-info">View</a>
         </div>
 
         <!-- TITLE -->

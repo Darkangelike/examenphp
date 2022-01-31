@@ -16,6 +16,21 @@ class Velo extends AbstractController
         ]);
     }
 
+    /**
+     * Bike creation:
+     * 
+     * Displays a form for the user to fill
+     * Upon submitting it, if these are correct:
+     * string name
+     * string description
+     * string image
+     * int price
+     * 
+     * then an insert request will be made by pdo
+     * to create a new bike in the database
+     * 
+     * If successful, redirection to the bikes/index
+     */
     public function new()
     {
         $name = null;
@@ -78,7 +93,16 @@ class Velo extends AbstractController
 
     }
 
-    public function delete()
+    /**
+     * Bike deletion:
+     * 
+     * 
+     * get the ID from the delete button
+     * And sends a delete request to the database
+     * 
+     * @return void
+     */
+    public function delete(): void
     {
         $id = null;
 
@@ -86,8 +110,6 @@ class Velo extends AbstractController
         {
             $id = (int)$_POST["id"];
         }
-
-        // $velo = new \Models\Velo();
 
         $velo = $this->defaultModel->findById($id);
 
@@ -108,4 +130,33 @@ class Velo extends AbstractController
                 "action" => "index"
         ]);
     }
+
+    public function show()
+    {
+        $id = null;
+
+        if (!empty($_GET["id"]) && ctype_digit($_GET["id"]))
+        {
+            $id = (int)$_GET["id"];
+        }
+
+        $velo = $this->defaultModel->findById($id);
+        
+        if (!$velo)
+        {
+            $this->redirect([
+                
+                "type" => "velo",
+                "action" => "index",
+                "info" => "errId"
+            ]);
+        }
+
+        return $this->render("velos/show", [
+            "pageTitle" => "A propos du vélo {$velo->getName()}",
+            "velo" => $velo]);
+
+    }
+
+
 }

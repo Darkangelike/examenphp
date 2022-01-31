@@ -4,26 +4,44 @@
         <i class="fas fa-plus-circle"></i></a>
 </div>
         
-<div class="container card-group d-flex flex-column text-center">
-    
+<!-- CARD GROUP -->
+<div class="card-group justify-content-center">
     <?php foreach ($velos as $velo) { ?>
-        
-        <div class="card">
-            <div class="card-header">
-                <h1><?= $velo->getName() ?></h1>
-            </div>
-            <div class="card-body">
-                <img src="images/<?= $velo->getImage() ?>.jpg" alt="">
 
-                <p><h3>Description:</h3>
-                <?= $velo->getDescription() ?>
-            </p>
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-info"><?= $velo->getPrice() ?> €</button>
-            </div>
-        </div>
+    <!-- CARD -->
+    <div class="velo-card m-4">
+
+        <!-- Buttons group -->
+        <div style="height:40px">
+
+            <!-- Delete button -->
+            <form action="?type=velo&action=delete&id=<?= $velo->id ?>" method="POST">
+                <!-- <input type="hidden" name="type" value="velo">
+                <input type="hidden" name="action" value="delete"> -->
+                <button value="<?= $velo->id ?>" name="id" style="float:right" class="btn btn-danger">X</button>
+            </form>
+
+            <!-- Edit button -->
+                <a href="?id=<?= $velo->id ?>&action=new&type=velo" style="float:right" class="btn btn-info">Edit</a>
     
-    <?php } ?>
+            <!-- View button -->
+                <a href="?id=<?= $velo->id ?>&action=show&type=velo" style="float:right" class="btn btn-info">View</a>
+        </div>
 
+        <!-- TITLE -->
+        <H1><?= $velo->getName() ?></H1>
+
+        <!-- Image -->
+        <img src="images/<?= $velo->getImage() ?>.jpg"/>
+
+        <!-- Footer -->
+        <div class="card-footer">
+            <h3>Description:</h3>
+            <p><?= $velo->getDescription() ?></p>
+            <button class="btn btn-info"><?= $velo->getPrice() ?> €</button>
+        </div>
+    </div>
+    <?php } ?>
+    <!-- End of card -->
+    
 </div>

@@ -32,9 +32,8 @@
         <!-- ALL AVIS -->
         <?php foreach ($avis as $unAvis) { ?>
         
-            <form action="deleteComment.php?id=<?= $commentaire->id ?>" method="POST">
-                <input type="hidden" name="cocktail_id" value="<?= $cocktail->id ?>">
-                <button value="<?= $commentaire->id ?>" name="commentaire_id" style="float:right" type="submit" class="btn btn-danger">X</button>
+            <form action="?type=avis&action=remove&id=<?= $unAvis->getId() ?>" method="POST">
+                <button value="<?= $unAvis->getId() ?>" name="id" style="float:right" type="submit" class="btn btn-danger">X</button>
             </form>
 
         <!-- TITLE -->

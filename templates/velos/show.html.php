@@ -30,7 +30,8 @@
         <?php foreach ($avis as $unAvis) { ?>
 
             <!-- Delete button -->
-            <form action="?type=avis&action=remove&id=<?= $unAvis->getId() ?>" method="POST">
+            <form action="?type=avis&action=delete" method="POST">
+                <input type="hidden" name="velo_id" id="velo_id" value="<?= $velo->getId() ?>">
                 <button value="<?= $unAvis->getId() ?>" name="id" style="float:right" type="submit" class="btn btn-danger">X</button>
             </form>
 

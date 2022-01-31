@@ -74,7 +74,14 @@ class Avis extends AbstractController
 
     }
 
-    public function delete()
+    /**
+     * Deletes a comment using its id
+     * redirects to the page of the bike
+     * Adds an info err if any of the ids are wrong
+     * 
+     * @return void
+     */
+    public function delete():void
     {
         $id = null;
         $velo_id = null;
@@ -94,10 +101,6 @@ class Avis extends AbstractController
 
         $avis = $this->defaultModel->findById($id);
 
-        var_dump($velo);
-        var_dump($avis);
-        die();
-
         if (!$avis)
         {
             $this->redirect([
@@ -106,6 +109,14 @@ class Avis extends AbstractController
                 "id" => $velo_id
             ]);
         }
+        
+        $this->defaultModel->remove($id);
+
+        $this->redirect([
+                "type" => "velo",
+                "action" => "show",
+                "id" => $velo_id
+        ]);
     }
 
 

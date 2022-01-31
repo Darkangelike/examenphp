@@ -14,7 +14,7 @@ class PdoMySQL
      * !!! remember to change the database name, username, and the password !!!
      */
     static function getPdo():\PDO{
-    $pdo = new \PDO ("mysql:host=localhost;dbname=databaseName;charset=utf8", "username", "password", [
+    $pdo = new \PDO ("mysql:host=localhost;dbname=magasinVelo;charset=utf8", "bikeadmin", "mountainbike", [
         \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
         \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ
     ]);
